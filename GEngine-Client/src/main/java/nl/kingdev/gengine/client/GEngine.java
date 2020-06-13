@@ -13,12 +13,14 @@ public class GEngine {
 
     @Getter
     private static GEngine instance = new GEngine();
-
     @Getter
     private List<IRenderLayer> layers = new ArrayList<>();
 
+    @Getter
+    private IClientApplication clientApplication;
 
     public void bootApplication(IClientApplication app) {
+        this.clientApplication = app;
         app.boot();
         app.createWindow();
         MatrixUtils.setup(app);

@@ -7,6 +7,7 @@ import nl.kingdev.gengine.client.GEngine;
 import nl.kingdev.gengine.client.IClientApplication;
 import nl.kingdev.gengine.client.layer.IRenderLayer;
 import nl.kingdev.gengine.client.window.Window;
+import org.lwjgl.opengl.GL11;
 
 public class TestGame implements IClientApplication {
 
