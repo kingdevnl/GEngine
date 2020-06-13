@@ -29,8 +29,10 @@ public class IOUtils {
             fc.close();
         } else {
             int size = 0;
-            buffer = memAlloc(bufferSize);
             try (InputStream source = IOUtils.class.getResourceAsStream(resource)) {
+                buffer = memAlloc(source.available());
+
+
                 if (source == null)
                     throw new FileNotFoundException(resource);
                 try (ReadableByteChannel rbc = Channels.newChannel(source)) {
@@ -49,6 +51,7 @@ public class IOUtils {
         }
         buffer.put((byte) 0);
         buffer.flip();
+
         return buffer;
     }
 }
