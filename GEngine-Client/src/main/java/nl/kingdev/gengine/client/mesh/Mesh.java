@@ -4,6 +4,7 @@ import com.gengine.common.interfaces.IDestroyable;
 import lombok.Getter;
 import nl.kingdev.gengine.client.IClientApplication;
 import nl.kingdev.gengine.client.interfaces.IRenderable;
+import nl.kingdev.gengine.client.shader.ShaderProgram;
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.FloatBuffer;
@@ -56,7 +57,7 @@ public class Mesh implements IDestroyable, IRenderable {
 
 
     @Override
-    public void render(IClientApplication app) {
+    public void render(IClientApplication app, ShaderProgram shader) {
         glBindVertexArray(vao);
         glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);

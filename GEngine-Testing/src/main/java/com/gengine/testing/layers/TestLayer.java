@@ -2,24 +2,57 @@ package com.gengine.testing.layers;
 
 import com.gengine.testing.shaders.TestShader;
 import nl.kingdev.gengine.client.IClientApplication;
+import nl.kingdev.gengine.client.gameobject.GameObject;
 import nl.kingdev.gengine.client.layer.IRenderLayer;
+import nl.kingdev.gengine.client.math.MatrixUtils;
 import nl.kingdev.gengine.client.mesh.Mesh;
 import nl.kingdev.gengine.client.shader.ShaderProgram;
 import org.lwjgl.opengl.GL11;
 
 public class TestLayer implements IRenderLayer {
 
-    private ShaderProgram shader;
+    private TestShader shader;
     private Mesh mesh;
+
+    private GameObject gameObject;
 
     @Override
     public void setup() {
         shader = new TestShader();
         mesh = new Mesh(new float[]{
-                -1, -1, -3f,
-                1, -1, -3f,
-                0, 1, -3f,
-        }, new int[]{0, 1, 2});
+                // VO
+                -0.5f,  0.5f,  0.5f,
+                // V1
+                -0.5f, -0.5f,  0.5f,
+                // V2
+                0.5f, -0.5f,  0.5f,
+                // V3
+                0.5f,  0.5f,  0.5f,
+                // V4
+                -0.5f,  0.5f, -0.5f,
+                // V5
+                0.5f,  0.5f, -0.5f,
+                // V6
+                -0.5f, -0.5f, -0.5f,
+                // V7
+                0.5f, -0.5f, -0.5f,
+        }, new int[]{
+                // Front face
+                0, 1, 3, 3, 1, 2,
+                // Top Face
+                4, 0, 3, 5, 4, 3,
+                // Right face
+                3, 2, 7, 5, 3, 7,
+                // Left face
+                6, 1, 0, 6, 0, 4,
+                // Bottom face
+                2, 1, 6, 2, 6, 7,
+                // Back face
+                7, 6, 4, 7, 4, 5,
+        });
+        gameObject = new GameObject(mesh);
+
+        gameObject.setPosition(0,0, -2.4f);
 
     }
 
@@ -29,7 +62,13 @@ public class TestLayer implements IRenderLayer {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
 
         shader.bind();
-        mesh.render(app);
+
+        shader.modelMatrix.store(MatrixUtils.getModelMatrix(gameObject));
+        gameObject.render(app, shader);
+
+        gameObject.getRotation().y +=0.5f;
+        gameObject.getRotation().z +=0.5f;
+
         shader.unbind();
         GL11.glDisable(GL11.GL_DEPTH_TEST);
 
@@ -42,7 +81,7 @@ public class TestLayer implements IRenderLayer {
 
     @Override
     public void destroy() {
-        mesh.destroy();
+        gameObject.destroy();
         shader.destroy();
     }
 }
