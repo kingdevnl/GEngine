@@ -1,0 +1,5 @@
+rootProject.name = 'GEngine'
+include 'GEngine-Common'
+include 'GEngine-Client'
+include 'GEngine-Testing'
+
