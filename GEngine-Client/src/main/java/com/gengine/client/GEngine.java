@@ -1,10 +1,11 @@
-package nl.kingdev.gengine.client;
+package com.gengine.client;
 
+import com.gengine.client.math.MatrixUtils;
 import lombok.Getter;
-import nl.kingdev.gengine.client.layer.IRenderLayer;
-import nl.kingdev.gengine.client.math.MatrixUtils;
-import nl.kingdev.gengine.client.window.Window;
+import com.gengine.client.layer.IRenderLayer;
+import com.gengine.client.window.Window;
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class GEngine {
     public void update(IClientApplication application, Window window) {
         window.clear();
 
+
         layers.forEach(IRenderLayer::update);
 
         window.update();
@@ -38,6 +40,8 @@ public class GEngine {
     }
 
     public void render(IClientApplication application, Window window) {
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
+
         layers.forEach(layer -> layer.render(application));
 
         GLFW.glfwSwapBuffers(window.getHandle());

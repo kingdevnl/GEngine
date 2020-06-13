@@ -1,12 +1,12 @@
-package nl.kingdev.gengine.client.gameobject;
+package com.gengine.client.gameobject;
 
+import com.gengine.client.shader.ShaderProgram;
 import com.gengine.common.interfaces.IDestroyable;
 import lombok.Getter;
 import lombok.Setter;
-import nl.kingdev.gengine.client.IClientApplication;
-import nl.kingdev.gengine.client.interfaces.IRenderable;
-import nl.kingdev.gengine.client.mesh.Mesh;
-import nl.kingdev.gengine.client.shader.ShaderProgram;
+import com.gengine.client.IClientApplication;
+import com.gengine.client.interfaces.IRenderable;
+import com.gengine.client.mesh.Mesh;
 import org.joml.Vector3f;
 
 public class GameObject implements IRenderable, IDestroyable {

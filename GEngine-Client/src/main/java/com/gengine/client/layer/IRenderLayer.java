@@ -1,7 +1,7 @@
-package nl.kingdev.gengine.client.layer;
+package com.gengine.client.layer;
 
 import com.gengine.common.interfaces.IDestroyable;
-import nl.kingdev.gengine.client.IClientApplication;
+import com.gengine.client.IClientApplication;
 
 public interface IRenderLayer extends IDestroyable {
     public void setup();

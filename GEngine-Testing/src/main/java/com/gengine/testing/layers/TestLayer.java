@@ -1,12 +1,12 @@
 package com.gengine.testing.layers;
 
 import com.gengine.testing.shaders.TestShader;
-import nl.kingdev.gengine.client.IClientApplication;
-import nl.kingdev.gengine.client.gameobject.GameObject;
-import nl.kingdev.gengine.client.layer.IRenderLayer;
-import nl.kingdev.gengine.client.math.MatrixUtils;
-import nl.kingdev.gengine.client.mesh.Mesh;
-import nl.kingdev.gengine.client.shader.ShaderProgram;
+import com.gengine.client.IClientApplication;
+import com.gengine.client.gameobject.GameObject;
+import com.gengine.client.layer.IRenderLayer;
+import com.gengine.client.math.MatrixUtils;
+import com.gengine.client.mesh.Mesh;
+import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
 public class TestLayer implements IRenderLayer {
@@ -60,16 +60,19 @@ public class TestLayer implements IRenderLayer {
     @Override
     public void render(IClientApplication app) {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
-
         shader.bind();
 
         shader.modelMatrix.store(MatrixUtils.getModelMatrix(gameObject));
         gameObject.render(app, shader);
 
+
+
+
         gameObject.getRotation().y +=0.5f;
         gameObject.getRotation().z +=0.5f;
 
         shader.unbind();
+
         GL11.glDisable(GL11.GL_DEPTH_TEST);
 
     }

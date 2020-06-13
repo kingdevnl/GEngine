@@ -1,10 +1,10 @@
-package nl.kingdev.gengine.client.mesh;
+package com.gengine.client.mesh;
 
+import com.gengine.client.shader.ShaderProgram;
 import com.gengine.common.interfaces.IDestroyable;
 import lombok.Getter;
-import nl.kingdev.gengine.client.IClientApplication;
-import nl.kingdev.gengine.client.interfaces.IRenderable;
-import nl.kingdev.gengine.client.shader.ShaderProgram;
+import com.gengine.client.IClientApplication;
+import com.gengine.client.interfaces.IRenderable;
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.FloatBuffer;

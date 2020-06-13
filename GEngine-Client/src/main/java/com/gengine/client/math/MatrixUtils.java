@@ -1,7 +1,7 @@
-package nl.kingdev.gengine.client.math;
+package com.gengine.client.math;
 
-import nl.kingdev.gengine.client.IClientApplication;
-import nl.kingdev.gengine.client.gameobject.GameObject;
+import com.gengine.client.IClientApplication;
+import com.gengine.client.gameobject.GameObject;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 

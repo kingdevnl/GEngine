@@ -1,13 +1,13 @@
 package com.gengine.testing;
 
+import com.gengine.client.layer.layers.GuiLayer;
 import com.gengine.common.logging.Logger;
 import com.gengine.testing.layers.TestLayer;
 import lombok.Getter;
-import nl.kingdev.gengine.client.GEngine;
-import nl.kingdev.gengine.client.IClientApplication;
-import nl.kingdev.gengine.client.layer.IRenderLayer;
-import nl.kingdev.gengine.client.window.Window;
-import org.lwjgl.opengl.GL11;
+import com.gengine.client.GEngine;
+import com.gengine.client.IClientApplication;
+import com.gengine.client.layer.IRenderLayer;
+import com.gengine.client.window.Window;
 
 public class TestGame implements IClientApplication {
 
@@ -33,9 +33,13 @@ public class TestGame implements IClientApplication {
     @Override
     public void startLoop() {
         window.setVisible(true);
-
-
         GEngine.getInstance().pushLayer(new TestLayer());
+
+        GEngine.getInstance().pushLayer(new GuiLayer());
+
+
+
+
         while (!window.isCloseRequested()) {
             GEngine.getInstance().update(this,window);
             GEngine.getInstance().render(this,window);

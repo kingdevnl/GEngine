@@ -1,8 +1,8 @@
 package com.gengine.testing.shaders;
 
-import nl.kingdev.gengine.client.math.MatrixUtils;
-import nl.kingdev.gengine.client.shader.ShaderProgram;
-import nl.kingdev.gengine.client.shader.uniforms.MatrixUniform;
+import com.gengine.client.math.MatrixUtils;
+import com.gengine.client.shader.ShaderProgram;
+import com.gengine.client.shader.uniforms.MatrixUniform;
 import org.joml.Matrix4f;
 
 public class TestShader extends ShaderProgram {

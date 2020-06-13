@@ -1,4 +1,4 @@
-package nl.kingdev.gengine.client.shader;
+package com.gengine.client.shader;
 
 import com.gengine.common.interfaces.IDestroyable;
 import com.gengine.common.logging.Logger;
@@ -6,12 +6,9 @@ import lombok.Getter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;

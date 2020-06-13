@@ -19,6 +19,9 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 }
 jar {
+    manifest {
+        attributes('Main-Class': 'com.gengine.testing.TestGame')
+    }
     configurations.shade.each { dep ->
         from(project.zipTree(dep)){
             exclude 'META-INF', 'META-INF/**'

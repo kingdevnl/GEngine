@@ -1,13 +1,13 @@
-package nl.kingdev.gengine.client.window;
+package com.gengine.client.window;
 
 import com.gengine.common.interfaces.IDestroyable;
 import com.gengine.common.logging.Logger;
 import lombok.Getter;
-import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11.*;
 
 
 public class Window implements IDestroyable {
@@ -47,7 +47,7 @@ public class Window implements IDestroyable {
 
     public void clear() {
 
-        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
     }
 
@@ -76,4 +76,6 @@ public class Window implements IDestroyable {
         glfwHideWindow(handle);
 
     }
+
+
 }

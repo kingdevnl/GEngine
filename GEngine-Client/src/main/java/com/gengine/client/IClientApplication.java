@@ -1,6 +1,6 @@
-package nl.kingdev.gengine.client;
+package com.gengine.client;
 
-import nl.kingdev.gengine.client.window.Window;
+import com.gengine.client.window.Window;
 
 public interface IClientApplication {
 

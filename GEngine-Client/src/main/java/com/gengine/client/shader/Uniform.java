@@ -1,4 +1,4 @@
-package nl.kingdev.gengine.client.shader;
+package com.gengine.client.shader;
 
 import lombok.Getter;
 
