@@ -6,7 +6,6 @@ import com.gengine.client.gameobject.GameObject;
 import com.gengine.client.layer.IRenderLayer;
 import com.gengine.client.math.MatrixUtils;
 import com.gengine.client.mesh.Mesh;
-import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
 public class TestLayer implements IRenderLayer {
@@ -73,7 +72,6 @@ public class TestLayer implements IRenderLayer {
 
         shader.unbind();
 
-        GL11.glDisable(GL11.GL_DEPTH_TEST);
 
     }
 

@@ -10,9 +10,6 @@ import org.lwjgl.nanovg.NVGColor;
 import org.lwjgl.system.MemoryUtil;
 
 import java.nio.ByteBuffer;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static com.gengine.client.utils.ColorUtils.rgba;
 import static org.lwjgl.nanovg.NanoVG.*;
@@ -29,7 +26,7 @@ public class GuiLayer implements IRenderLayer {
     private int font;
 
     private Logger logger = new Logger(GuiLayer.class);
-    private final DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+
     @SneakyThrows
     public void setup() {
         vg = nvgCreate(NVG_ANTIALIAS | NVG_STENCIL_STROKES);
@@ -64,20 +61,23 @@ public class GuiLayer implements IRenderLayer {
 
     }
 
+
     @Override
     public void render(IClientApplication app) {
 
         Window window = app.getWindow();
 
 
+
+        glEnable(GL_BLEND);
         nvgBeginFrame(vg, window.getWidth(), window.getHeight(), 1);
-        renderTextAlfa(10,10, "NanoVG", 24,255 );
+        renderTextAlfa(10,10, "GEngine", 25,255 );
+
+
+
         nvgEndFrame(vg);
+        glDisable(GL_BLEND);
 
-
-        glDisable(GL_CULL_FACE);
-
-        glEnable(GL_DEPTH_TEST);
 
     }
 
