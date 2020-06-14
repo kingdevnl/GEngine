@@ -14,7 +14,7 @@ public class MatrixUtils {
 
     public static Matrix4f projectionMatrix = new Matrix4f();
 
-    private static Matrix4f modelMatrix = new Matrix4f();
+    private static Matrix4f modelViewMatrix = new Matrix4f();
     private static Matrix4f viewMatrix = new Matrix4f();
 
 
@@ -25,11 +25,11 @@ public class MatrixUtils {
         System.out.println("MatrixUtils.setup");
     }
 
-    public static Matrix4f getModelMatrix(GameObject gameObject, IClientApplication app) {
+    public static Matrix4f getModelViewMatrix(GameObject gameObject, IClientApplication app) {
 
         Vector3f rotation = gameObject.getRotation();
 
-        return modelMatrix.set(getViewMatrix(app.getCamera())).translate(gameObject.getPosition()).
+        return modelViewMatrix.set(getViewMatrix(app.getCamera())).translate(gameObject.getPosition()).
                 rotateX((float)Math.toRadians(-rotation.x)).
                 rotateY((float)Math.toRadians(-rotation.y)).
                 rotateZ((float)Math.toRadians(-rotation.z)).

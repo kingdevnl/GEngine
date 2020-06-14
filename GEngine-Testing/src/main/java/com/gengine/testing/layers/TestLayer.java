@@ -8,7 +8,6 @@ import com.gengine.client.gameobject.GameObject;
 import com.gengine.client.layer.IRenderLayer;
 import com.gengine.client.math.MatrixUtils;
 import com.gengine.client.mesh.Mesh;
-import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 
 
@@ -39,7 +38,7 @@ public class TestLayer implements IRenderLayer {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         shader.bind();
 
-        shader.modelMatrix.store(MatrixUtils.getModelMatrix(gameObject, app));
+        shader.modelMatrix.store(MatrixUtils.getModelViewMatrix(gameObject, app));
         shader.hasTexture.store(gameObject.getMesh().getTexture() != null);
         gameObject.render(app, shader);
 
