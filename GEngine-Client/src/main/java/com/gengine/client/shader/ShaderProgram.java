@@ -47,9 +47,12 @@ public class ShaderProgram implements IDestroyable {
     protected void setup() {
 
     }
-    protected void loadUniform(Uniform uniform) {
-        uniform.load(this);
-        uniforms.add(uniform);
+    protected void loadUniform(Uniform... uniform) {
+        for (Uniform u : uniform) {
+            u.load(this);
+            uniforms.add(u);
+        }
+
     }
 
     private int createShader(Shader shader) {

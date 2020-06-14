@@ -43,4 +43,7 @@ dependencies {
     compile "org.lwjgl:lwjgl-par::$lwjglNatives"
     compile "org.lwjgl:lwjgl-stb::$lwjglNatives"
     compile "org.joml:joml:${jomlVersion}"
+
+    compile group: 'org.l33tlabs.twl', name: 'pngdecoder', version: '1.0'
+
 }

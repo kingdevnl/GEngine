@@ -1,6 +1,7 @@
 package com.gengine.testing.layers;
 
 import com.gengine.client.io.ModelLoader;
+import com.gengine.client.texture.Texture;
 import com.gengine.testing.shaders.TestShader;
 import com.gengine.client.IClientApplication;
 import com.gengine.client.gameobject.GameObject;
@@ -23,14 +24,12 @@ public class TestLayer implements IRenderLayer {
     @Override
     public void setup() {
         shader = new TestShader();
-        mesh = ModelLoader.loadMesh("/assets/models/dragon.obj");
+        mesh = ModelLoader.loadMesh("/assets/models/block.obj");
+        mesh.setTexture(Texture.loadTexture("/assets/textures/UV.png"));
 
         gameObject = new GameObject(mesh);
 
         gameObject.setPosition(0,0, -25f);
-
-
-        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
 
     }
@@ -42,6 +41,7 @@ public class TestLayer implements IRenderLayer {
         shader.bind();
 
         shader.modelMatrix.store(MatrixUtils.getModelMatrix(gameObject));
+        shader.hasTexture.store(gameObject.getMesh().getTexture() != null);
         gameObject.render(app, shader);
 
 

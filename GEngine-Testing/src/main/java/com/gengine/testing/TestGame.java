@@ -58,10 +58,6 @@ public class TestGame implements IClientApplication {
 
         }
 
-        GEngine.getInstance().getLayers().forEach(layer -> {
-            layer.destroy();
-            GEngine.getInstance().getLayers().remove(layer);
-        });
     }
 
 
