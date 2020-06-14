@@ -57,7 +57,7 @@ public class GuiLayer implements IRenderLayer {
 
 
     @Override
-    public void update() {
+    public void update(IClientApplication app) {
 
     }
 

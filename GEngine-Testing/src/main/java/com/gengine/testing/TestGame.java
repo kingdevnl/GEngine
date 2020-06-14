@@ -1,5 +1,6 @@
 package com.gengine.testing;
 
+import com.gengine.client.camera.Camera;
 import com.gengine.client.layer.layers.GuiLayer;
 import com.gengine.common.logging.Logger;
 import com.gengine.testing.layers.TestLayer;
@@ -17,6 +18,9 @@ public class TestGame implements IClientApplication {
 
     @Getter
     private Logger logger = new Logger(TestGame.class);
+
+    @Getter
+    private Camera camera = new Camera();
 
     @Override
     public void boot() {
@@ -59,7 +63,6 @@ public class TestGame implements IClientApplication {
         }
 
     }
-
 
 
     public static void main(String[] args) {

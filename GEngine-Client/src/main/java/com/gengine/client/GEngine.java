@@ -33,7 +33,7 @@ public class GEngine {
         window.clear();
 
 
-        layers.forEach(IRenderLayer::update);
+        layers.forEach(iRenderLayer -> iRenderLayer.update(application));
 
         window.update();
 

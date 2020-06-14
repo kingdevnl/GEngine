@@ -6,6 +6,10 @@ import lombok.Getter;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
@@ -20,6 +24,10 @@ public class Window implements IDestroyable {
     private String title;
     @Getter
     private long handle;
+
+
+    private List<Integer> keysDown = new ArrayList<>();
+
 
     public Window(int width, int height, String title) {
 
@@ -42,6 +50,16 @@ public class Window implements IDestroyable {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
         handle = glfwCreateWindow(width, height, title, 0, 0);
+
+        glfwSetKeyCallback(handle, (window, key, scancode, action, mods) -> {
+            if(action == GLFW_PRESS) {
+                if(!keysDown.contains(key)) {
+                    keysDown.add(key);
+                }
+            } else if(action == GLFW_RELEASE) {
+                keysDown.remove((Object)key);
+            }
+        });
         return this;
     }
 
@@ -75,6 +93,10 @@ public class Window implements IDestroyable {
         }
         glfwHideWindow(handle);
 
+    }
+
+    public boolean isKeyDown(int key) {
+        return keysDown.contains(key);
     }
 
 
