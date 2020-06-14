@@ -4,6 +4,7 @@ import com.gengine.client.shader.Uniform;
 import org.lwjgl.opengl.GL20;
 
 public class BooleanUniform extends Uniform<Boolean> {
+
     public BooleanUniform(String name) {
         super(name);
     }

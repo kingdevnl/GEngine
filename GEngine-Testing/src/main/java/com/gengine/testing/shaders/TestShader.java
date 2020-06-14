@@ -5,6 +5,7 @@ import com.gengine.client.shader.ShaderProgram;
 import com.gengine.client.shader.uniforms.BooleanUniform;
 import com.gengine.client.shader.uniforms.IntegerUniform;
 import com.gengine.client.shader.uniforms.MatrixUniform;
+import com.gengine.client.shader.uniforms.TextureSamplerUniform;
 import org.joml.Matrix4f;
 
 public class TestShader extends ShaderProgram {
@@ -12,7 +13,7 @@ public class TestShader extends ShaderProgram {
     public MatrixUniform projectionMatrix = new MatrixUniform("projectionMatrix");
     public MatrixUniform modelMatrix = new MatrixUniform("modelMatrix");
 
-    public IntegerUniform textureSampler = new IntegerUniform("texture_sampler");
+    public TextureSamplerUniform textureSampler = new TextureSamplerUniform("texture_sampler");
     public BooleanUniform hasTexture = new BooleanUniform("hasTexture");
 
     public TestShader() {

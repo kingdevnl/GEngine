@@ -10,9 +10,7 @@ import com.gengine.client.math.MatrixUtils;
 import com.gengine.client.mesh.Mesh;
 import org.lwjgl.opengl.GL11;
 
-import java.io.File;
 
-import static org.lwjgl.opengl.GL11.*;
 
 public class TestLayer implements IRenderLayer {
 
