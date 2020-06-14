@@ -4,6 +4,7 @@ import com.gengine.client.camera.Camera;
 import com.gengine.client.layer.layers.GuiLayer;
 import com.gengine.common.logging.Logger;
 import com.gengine.testing.layers.TestLayer;
+import com.gengine.testing.states.TestState;
 import lombok.Getter;
 import com.gengine.client.GEngine;
 import com.gengine.client.IClientApplication;
@@ -37,9 +38,8 @@ public class TestGame implements IClientApplication {
     @Override
     public void startLoop() {
         window.setVisible(true);
-        GEngine.getInstance().pushLayer(new TestLayer());
 
-        GEngine.getInstance().pushLayer(new GuiLayer());
+        GEngine.getInstance().setGameState(this,new TestState());
 
 
 
@@ -55,12 +55,10 @@ public class TestGame implements IClientApplication {
     @Override
     public void shutdown() {
 
-        for (int i = 0; i < GEngine.getInstance().getLayers().size(); i++) {
-            IRenderLayer iRenderLayer = GEngine.getInstance().getLayers().get(i);
-            iRenderLayer.destroy();
-            GEngine.getInstance().getLayers().remove(iRenderLayer);
+        GEngine.getInstance().getGameState().destroy();
 
-        }
+
+
 
     }
 

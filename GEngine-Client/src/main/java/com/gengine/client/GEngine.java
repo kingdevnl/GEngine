@@ -1,6 +1,7 @@
 package com.gengine.client;
 
 import com.gengine.client.math.MatrixUtils;
+import com.gengine.client.state.GameState;
 import lombok.Getter;
 import com.gengine.client.layer.IRenderLayer;
 import com.gengine.client.window.Window;
@@ -14,11 +15,13 @@ public class GEngine {
 
     @Getter
     private static GEngine instance = new GEngine();
-    @Getter
-    private List<IRenderLayer> layers = new ArrayList<>();
 
     @Getter
     private IClientApplication clientApplication;
+
+
+    @Getter
+    private GameState gameState;
 
     public void bootApplication(IClientApplication app) {
         this.clientApplication = app;
@@ -33,7 +36,8 @@ public class GEngine {
         window.clear();
 
 
-        layers.forEach(iRenderLayer -> iRenderLayer.update(application));
+        gameState.update(application);
+
 
         window.update();
 
@@ -42,16 +46,13 @@ public class GEngine {
     public void render(IClientApplication application, Window window) {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
 
-        layers.forEach(layer -> layer.render(application));
-
+        gameState.render(application);
         GLFW.glfwSwapBuffers(window.getHandle());
     }
 
-    public void pushLayer(IRenderLayer layer) {
-        layer.setup();
-        layers.add(layer);
-    }
-    public void popLayer(IRenderLayer layer) {
-        layers.remove(layer);
+
+    public void setGameState(IClientApplication app, GameState state) {
+        this.gameState = state;
+        this.gameState.setup(app);
     }
 }
